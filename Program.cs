@@ -10,7 +10,7 @@ namespace LTTTask
     {
         static void Main(string[] args)
         {
-            string str="0";
+            string str = "0";
 
             do
             {
@@ -42,13 +42,13 @@ new Dictionary<int, string>();
                             Console.WriteLine("The ount need to be paid :5000");
                             Console.WriteLine("Enter 1 to continue option Else the register process will star from first");
                             str = Console.ReadLine();
-                            if(str =="1")
+                            if (str == "1")
                             {
 
                                 My_dict.Add(idnum, firstName);
                                 My_dict.Add(idnum, secondName);
-                                My_dict.Add(idnum,dob);
-                                My_dict.Add(idnum,"B.COM");
+                                My_dict.Add(idnum, dob);
+                                My_dict.Add(idnum, "B.COM");
                                 My_dict.Add(idnum, contactNo);
                                 My_dict.Add(idnum, "5000");
 
@@ -106,8 +106,9 @@ new Dictionary<int, string>();
             }
             while (str == "1");
             Console.WriteLine("Do you whant to print details press 1");
-            
+
 
         }
-        
+
     }
+}
