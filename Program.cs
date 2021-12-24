@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace LTTTask
 {
     class Program
@@ -11,10 +10,11 @@ namespace LTTTask
         static void Main(string[] args)
         {
             string str = "0";
+            Console.WriteLine("Welcome you");
+
 
             do
             {
-                Console.WriteLine("Welcome you");
                 Console.WriteLine("Enter the Id to register");
                 string id = Console.ReadLine();
                 int idnum;
@@ -30,8 +30,8 @@ namespace LTTTask
                     string dob = Console.ReadLine();
                     Console.WriteLine("Enter your contact number");
                     string contactNo = Console.ReadLine();
-                    Dictionary<int, string> My_dict =
-new Dictionary<int, string>();
+                    Dictionary<int, object> My_dict =
+new Dictionary<int, object>();
                     Console.WriteLine("Enter number According to Option: 1:B.Com \n 2:B.E \n 3:B.sc");
                     string optiom = Console.ReadLine();
                     int option = Int32.Parse(optiom);
@@ -39,65 +39,42 @@ new Dictionary<int, string>();
                         if (option == 1)
                         {
                             Console.WriteLine("Thank you for selecting B.Com");
-                            Console.WriteLine("The ount need to be paid :5000");
-                            Console.WriteLine("Enter 1 to continue option Else the register process will star from first");
+                            Console.WriteLine("The amount need to be paid :5000");
+                            Console.WriteLine("Enter 1 to add new user  else press any other key");
                             str = Console.ReadLine();
-                            if (str == "1")
-                            {
 
-                                My_dict.Add(idnum, firstName);
-                                My_dict.Add(idnum, secondName);
-                                My_dict.Add(idnum, dob);
-                                My_dict.Add(idnum, "B.COM");
-                                My_dict.Add(idnum, contactNo);
-                                My_dict.Add(idnum, "5000");
+                            Admission admidssion = new Admission(firstName, secondName, contactNo, dob, "B.Com", 5000);
+                            My_dict.Add(123, admidssion);
 
 
-                            }
                         }
                         else if (option == 2)
                         {
                             Console.WriteLine("Thank you for selecting B.E");
-                            Console.WriteLine("The ount need to be paid :50000");
-                            Console.WriteLine("Enter 1 to continue option Else the register process will start from first");
+                            Console.WriteLine("The amount need to be paid :50000");
+                            Console.WriteLine("Enter 1 to add new user  else press any other key");
                             str = Console.ReadLine();
-                            if (str == "1")
-                            {
 
-                                My_dict.Add(idnum, firstName);
-                                My_dict.Add(idnum, secondName);
-                                My_dict.Add(idnum, dob);
-                                My_dict.Add(idnum, "B.E");
-                                My_dict.Add(idnum, contactNo);
-                                My_dict.Add(idnum, "50000");
+                            Admission admidssion = new Admission(firstName, secondName, contactNo, dob, "B.E", 50000);
 
-
-                            }
                         }
                         else if (option == 3)
                         {
                             Console.WriteLine("Thank you for selecting B.Sc");
                             Console.WriteLine("The ount need to be paid :20000");
-                            Console.WriteLine("Enter 1 to continue option Else the register process will begin from first");
+                            Console.WriteLine("Enter 1 to add new user  else press any other key");
+
                             str = Console.ReadLine();
-                            if (str == "1")
-                            {
 
-                                My_dict.Add(idnum, firstName);
-                                My_dict.Add(idnum, secondName);
-                                My_dict.Add(idnum, dob);
-                                My_dict.Add(idnum, "B.Sc");
-                                My_dict.Add(idnum, contactNo);
-                                My_dict.Add(idnum, "20000");
+                            Admission admidssion = new Admission(firstName, secondName, contactNo, dob, "B.Sc", 20000);
 
-
-                            }
                         }
                         else
                         {
                             Console.WriteLine("Invalid Entry");
                         }
                     }
+
                 }
                 else
                 {
@@ -105,10 +82,39 @@ new Dictionary<int, string>();
                 }
             }
             while (str == "1");
-            Console.WriteLine("Do you whant to print details press 1");
-
-
+            Console.WriteLine("Do you whant to print details press 1 \nIf need to display your");
+            string print = Console.ReadLine();
+            int val;
+            if (int.TryParse(print, out val))
+            {
+                Console.WriteLine("");
+            }
+            else
+            {
+                Console.WriteLine("You had entered a invalid number so the process is stopped");
+            }
         }
 
+    }
+    class Admission
+    {
+        public string name;
+        public int age;
+        public string firstName;
+        public string lastName;
+        public string contact;
+        public string dob;
+        public string course;
+        public int fee;
+        public Admission(string firstName, string lastName, string contact, string course, string dob, int fee)  // Instance constructor.
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.contact = contact;
+            this.dob = dob;
+            this.course = course;
+            this.fee = fee;
+
+        }
     }
 }
