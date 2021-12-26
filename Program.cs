@@ -19,13 +19,16 @@ namespace LTTTask
             IDictionary<int, string> course = new Dictionary<int, string>();
             IDictionary<int, int> admitionId = new Dictionary<int, int>();
             IDictionary<int, int> amount = new Dictionary<int, int>();
-            do
-            {
+            IDictionary<int, int> st = new Dictionary<int, int>();
+            do{
+                
+        
                 Console.WriteLine("Enter the Id to register");
                 string id = Console.ReadLine();
                 int idnum;
 
                 if (int.TryParse(id, out idnum))
+    
                 {
                     Console.
                         WriteLine("Enter First Name");
@@ -40,6 +43,7 @@ namespace LTTTask
                     Console.WriteLine("Enter number According to Option: 1:B.Com \n 2:B.E \n 3:B.sc");
                     string optiom = Console.ReadLine();
                     int option = Int32.Parse(optiom);
+                    
                     {
                         if (option == 1)
                         {
@@ -54,6 +58,7 @@ namespace LTTTask
                             course.Add(new KeyValuePair<int, string>(idnum, "B.Com"));
                             admitionId.Add(new KeyValuePair<int, int>(idnum, j));
                             amount.Add(new KeyValuePair<int, int>(idnum, 5000));
+                            st.Add(new KeyValuePair<int, int>(idnum, 5000));
                             j++;
                         }
                         else if (option == 2)
@@ -69,6 +74,7 @@ namespace LTTTask
                             course.Add(new KeyValuePair<int, string>(idnum, "B.E"));
                             amount.Add(new KeyValuePair<int, int>(idnum, 500000));
                             admitionId.Add(new KeyValuePair<int, int>(idnum, j));
+                            st.Add(new KeyValuePair<int, int>(idnum, 500000));
                             j++;
                         }
                         else if (option == 3)
@@ -84,6 +90,7 @@ namespace LTTTask
                             course.Add(new KeyValuePair<int, string>(idnum, "B.Sc"));
                             amount.Add(new KeyValuePair<int, int>(idnum, 20000));
                             admitionId.Add(new KeyValuePair<int, int>(idnum, j));
+                            st.Add(new KeyValuePair<int, int>(idnum, 20000));
                             j++;
                         }
                         else
@@ -148,11 +155,11 @@ namespace LTTTask
                         if (lNames.ContainsKey(x))
                         {
                             Console.WriteLine("Amount : {0}", amount[x]);
-                            int amo = 0;
-                            amo = amount[x] - amo;
-                            Console.WriteLine("Amount need to be paid : {0}", amo);
+                            int amo = amount[x];
                             do
                             {
+                                Console.WriteLine("Amount need to be paid {0}", st[x]);
+
                                 Console.WriteLine("Do you like to pay ammount : If yes press 1 Else press 2");
                                 string check = Console.ReadLine();
                                 if (check == "1")
@@ -162,18 +169,15 @@ namespace LTTTask
                                     int a = Int32.Parse(pay);
                                     if (a <= amo)
                                     {
-                                        Console.WriteLine("Ammount remmain to be paid : {0}", amo - a);
+                                        //Console.WriteLine("Ammount remmain to be paid : {0}", amo - a);
                                         amo = amo - a;
+                                        st[x]=amo;
+                                        Console.WriteLine("Amount need to be paid {0}", st[x]);
                                         if (amo <= 0)
                                         {
                                             op = 2;
                                         }
-                                        else
-                                        {
-                                            Console.WriteLine("Do you like to pay ammount : If yes press 1 Else press 2");
-
-                                            op = int.Parse(Console.ReadLine());
-                                        }
+    
                                     }
                                     else
                                     {
@@ -193,14 +197,14 @@ namespace LTTTask
                         }
                         else
                         {
-                              Console.WriteLine("Incorrect reg no");
-                                Console.WriteLine("Enter 1 to display the Register Detail");
-                                Console.WriteLine("Enter 2 to display the total ammount and balance to be paid ");
-                                Console.WriteLine("Enter 3 to display the selected course");
-                                Console.WriteLine("Enter 4 other key to exit");
-                                op = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Incorrect reg no");
+                            Console.WriteLine("Enter 1 to display the Register Detail");
+                            Console.WriteLine("Enter 2 to display the total ammount and balance to be paid ");
+                            Console.WriteLine("Enter 3 to display the selected course");
+                            Console.WriteLine("Enter 4 other key to exit");
+                            op = int.Parse(Console.ReadLine());
 
-                      
+
                         }
 
                     }
@@ -229,7 +233,7 @@ namespace LTTTask
 
                         }
                     }
-                    
+
                 }
 
                 while (op < 4);
@@ -239,3 +243,4 @@ namespace LTTTask
 
         }
     }
+}
