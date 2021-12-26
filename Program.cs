@@ -23,7 +23,7 @@ namespace LTTTask
             do{
                 
         
-                Console.WriteLine("Enter the Id to register");
+                Console.WriteLine("Enter the Id to register Note:Numerical");
                 string id = Console.ReadLine();
                 int idnum;
 
@@ -43,7 +43,6 @@ namespace LTTTask
                     Console.WriteLine("Enter number According to Option: 1:B.Com \n 2:B.E \n 3:B.sc");
                     string optiom = Console.ReadLine();
                     int option = Int32.Parse(optiom);
-                    
                     {
                         if (option == 1)
                         {
@@ -95,14 +94,14 @@ namespace LTTTask
                         }
                         else
                         {
-                            Console.WriteLine("Invalid Entry");
+                            str ="1";
                         }
                     }
 
                 }
                 else
                 {
-                    Console.WriteLine("You Shoud enter a number");
+                    str="1";
                 }
             }
             while (str == "1");
